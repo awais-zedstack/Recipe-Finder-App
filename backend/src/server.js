@@ -82,7 +82,13 @@ app.delete("/api/favourites/:userId/:recipeId", async (req, res) => {
 
 
 
-app.listen(PORT,(req,res)=>{
-  console.log(`Server is running on the port ${PORT}`);
-})
+// For local development
+if (process.env.NODE_ENV !== 'production') {
+  app.listen(PORT, () => {
+    console.log(`Server is running on the port ${PORT}`);
+  });
+}
+
+// Export for Vercel
+export default app;
 
